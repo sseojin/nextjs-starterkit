@@ -2,9 +2,10 @@ import Link from 'next/link';
 import { SITE_CONFIG } from '@/lib/constants';
 import { Navigation } from './navigation';
 import { ThemeToggle } from '@/components/shared/theme-toggle';
+import { Button } from '@/components/ui/button';
 
 // 헤더 컴포넌트
-// 로고, 네비게이션 메뉴, 다크모드 토글을 포함하는 상단 헤더
+// 로고, 네비게이션 메뉴, 로그인 버튼, 다크모드 토글을 포함하는 상단 헤더
 export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -22,8 +23,14 @@ export function Header() {
         {/* 중앙 네비게이션 */}
         <Navigation />
 
-        {/* 오른쪽 영역: 다크모드 토글 */}
+        {/* 오른쪽 영역: 로그인 버튼 + 다크모드 토글 */}
         <div className="flex items-center gap-2">
+          {/* 로그인 버튼 */}
+          <Button variant="ghost" size="sm" asChild>
+            <Link href="/login">로그인</Link>
+          </Button>
+
+          {/* 다크모드 토글 */}
           <ThemeToggle />
         </div>
       </div>
